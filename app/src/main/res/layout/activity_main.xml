@@ -10,37 +10,45 @@
         android:id="@+id/buttonScan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="136dp"
+        android:layout_marginTop="97dp"
         android:onClick="doScan"
         android:text="Scan QR Code"
-        tools:layout_editor_absoluteX="136dp"
-        tools:layout_editor_absoluteY="518dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etAddress" />
 
     <EditText
         android:id="@+id/etName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="89dp"
         android:ems="10"
         android:inputType="text"
         android:text="Title"
-        tools:layout_editor_absoluteX="101dp"
-        tools:layout_editor_absoluteY="219dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewAppTitle" />
 
     <EditText
         android:id="@+id/etAddress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="116dp"
+        android:ems="13"
         android:inputType="text"
         android:text="Address"
-        tools:layout_editor_absoluteX="100dp"
-        tools:layout_editor_absoluteY="376dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etName" />
 
     <TextView
         android:id="@+id/textViewAppTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="117dp"
+        android:layout_marginTop="85dp"
         android:text="QR Scanner"
         android:textSize="34sp"
-        tools:layout_editor_absoluteX="117dp"
-        tools:layout_editor_absoluteY="85dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

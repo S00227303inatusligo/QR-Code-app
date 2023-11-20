@@ -2,6 +2,8 @@ package com.example.qrcodeapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.SearchManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.content.Intent;
 import android.view.View;
@@ -23,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText etName, etAddress;
 
     //Initialise qr code scanner object
-    private IntentIntgrator qrScan = new IntentIntegrator(this);
+    private IntentIntegrator qrScan = new IntentIntegrator(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +37,31 @@ public class MainActivity extends AppCompatActivity {
         etName = findViewById(R.id.etName);
         etAddress = findViewById(R.id.etAddress);
 
+        // Set a click listener for etAddress
+        // Set a click listener for etAddress
+        // Set a click listener for etAddress
+        etAddress.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Get the URL from etAddress
+                String websiteUrl = etAddress.getText().toString().trim();
+
+                // Check if the URL is not empty
+                if (!websiteUrl.isEmpty()) {
+                    // Create an Intent to open a web browser
+                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(websiteUrl));
+
+                    // Check if there's an app that can handle this intent
+                    if (browserIntent.resolveActivity(getPackageManager()) != null) {
+                        // Start the activity
+                        startActivity(browserIntent);
+                    } else {
+                        // Handle the case where there's no app to handle the intent
+                        Toast.makeText(MainActivity.this, "No app to handle this URL", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+        });
     }
 
     //Scan function
