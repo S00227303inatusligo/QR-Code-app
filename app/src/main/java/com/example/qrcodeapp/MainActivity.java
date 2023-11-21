@@ -6,6 +6,7 @@ import android.app.SearchManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.content.Intent;
+import android.text.method.LinkMovementMethod;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -37,31 +38,6 @@ public class MainActivity extends AppCompatActivity {
         etName = findViewById(R.id.etName);
         etAddress = findViewById(R.id.etAddress);
 
-        // Set a click listener for etAddress
-        // Set a click listener for etAddress
-        // Set a click listener for etAddress
-        etAddress.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Get the URL from etAddress
-                String websiteUrl = etAddress.getText().toString().trim();
-
-                // Check if the URL is not empty
-                if (!websiteUrl.isEmpty()) {
-                    // Create an Intent to open a web browser
-                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(websiteUrl));
-
-                    // Check if there's an app that can handle this intent
-                    if (browserIntent.resolveActivity(getPackageManager()) != null) {
-                        // Start the activity
-                        startActivity(browserIntent);
-                    } else {
-                        // Handle the case where there's no app to handle the intent
-                        Toast.makeText(MainActivity.this, "No app to handle this URL", Toast.LENGTH_SHORT).show();
-                    }
-                }
-            }
-        });
     }
 
     //Scan function
@@ -84,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
                     //Populate textviews with data
                     etName.setText(obj.getString("title"));
                     etAddress.setText(obj.getString("website"));
+                    etAddress.setMovementMethod(LinkMovementMethod.getInstance());
                 } catch (JSONException e) {
                     e.printStackTrace();
                     //Encoded format doesn't match
